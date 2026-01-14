@@ -1,0 +1,157 @@
+---
+const steps = [
+    {
+        number: 1,
+        title: 'Vision',
+        icon: '<path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>',
+    },
+    {
+        number: 2,
+        title: 'Free Consultation',
+        icon: '<path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>',
+    },
+    {
+        number: 3,
+        title: 'Budget & Planning',
+        icon: '<path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>',
+    },
+    {
+        number: 4,
+        title: 'Get to Work',
+        icon: '<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>',
+    },
+    {
+        number: 5,
+        title: 'Enjoy',
+        icon: '<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>',
+    },
+];
+---
+
+<section class="section section--cream" id="process">
+    <div class="container">
+        <header class="section__header reveal">
+            <span class="section__badge">How We Work</span>
+            <h2 class="section__title">Our <em>Process</em></h2>
+            <div class="section__line"></div>
+        </header>
+
+        <div class="process__timeline">
+            {steps.map((step) => (
+                <div class="process__step reveal">
+                    <div class="process__icon-wrap">
+                        <span class="process__number">{step.number}</span>
+                        <svg class="process__icon" fill="currentColor" viewBox="0 0 24 24">
+                            <Fragment set:html={step.icon} />
+                        </svg>
+                    </div>
+                    <h3 class="process__title">{step.title}</h3>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .process__timeline {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        padding: 0 2rem;
+    }
+
+    .process__timeline::before {
+        content: '';
+        position: absolute;
+        top: 50px;
+        left: 15%;
+        right: 15%;
+        height: 2px;
+        background: linear-gradient(to right, transparent, var(--gold), var(--gold), transparent);
+    }
+
+    .process__step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 1;
+        position: relative;
+        z-index: 1;
+    }
+
+    .process__icon-wrap {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: var(--charcoal);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+        transition: all 0.4s var(--ease-out);
+    }
+
+    .process__step:hover .process__icon-wrap {
+        transform: scale(1.1);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .process__number {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--gold);
+        color: var(--charcoal);
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .process__icon {
+        width: 40px;
+        height: 40px;
+        color: var(--gold);
+    }
+
+    .process__title {
+        font-family: var(--font-display);
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: var(--charcoal);
+    }
+
+    @media (max-width: 1024px) {
+        .process__timeline {
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .process__timeline::before {
+            display: none;
+        }
+
+        .process__step {
+            flex: 0 0 33.333%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .process__step {
+            flex: 0 0 50%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .process__step {
+            flex: 0 0 100%;
+        }
+    }
+</style>

@@ -1,0 +1,156 @@
+---
+
+---
+
+<section class="section contact" id="contact">
+    <div class="contact__bg"></div>
+    <div class="container contact__inner">
+        <header class="section__header reveal">
+            <span class="section__badge">Get in Touch</span>
+            <h2 class="section__title" style="color: #fff;">Contact <em>Us</em></h2>
+            <div class="section__line"></div>
+        </header>
+
+        <div class="contact__grid">
+            <div class="contact__item reveal">
+                <svg class="contact__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                <p class="contact__label">Address</p>
+                <p class="contact__value">1067 N State St<br>Orem, UT 84057</p>
+            </div>
+
+            <div class="contact__item reveal">
+                <svg class="contact__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+                <p class="contact__label">Phone</p>
+                <p class="contact__value"><a href="tel:+18018894842">+1 (801) 889-4842</a></p>
+            </div>
+
+            <div class="contact__item reveal">
+                <svg class="contact__icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                </svg>
+                <p class="contact__label">Facebook</p>
+                <p class="contact__value"><a href="https://facebook.com/kabcountertops" target="_blank">@kabcountertops</a></p>
+            </div>
+
+            <div class="contact__item reveal">
+                <svg class="contact__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect x="2" y="2" width="20" height="20" rx="5" stroke-width="1.5"/>
+                    <path stroke-width="1.5" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                </svg>
+                <p class="contact__label">Instagram</p>
+                <p class="contact__value"><a href="https://instagram.com/kabgranite" target="_blank">@kabgranite</a></p>
+            </div>
+
+            <div class="contact__item reveal">
+                <svg class="contact__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <p class="contact__label">Email</p>
+                <p class="contact__value"><a href="mailto:info@kabmarbleandgranite.com">info@kabmarbleandgranite.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map -->
+<div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10069.223117810354!2d-111.70776822278515!3d40.31667076172112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874d84c36bae01dd%3A0x5a89c1fac8f0ce9e!2sK%20A%20B%20Marble%20and%20Granite%20Countertops!5e1!3m2!1sen!2sus!4v1768350976643!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+<style>
+    .contact {
+        background: var(--charcoal);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact__bg {
+        position: absolute;
+        inset: 0;
+        opacity: 0.05;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .contact__inner {
+        position: relative;
+        z-index: 1;
+    }
+
+    .contact__grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2rem;
+        margin-top: 4rem;
+    }
+
+    .contact__item {
+        text-align: center;
+    }
+
+    .contact__icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 1.25rem;
+        color: var(--gold);
+    }
+
+    .contact__label {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+    }
+
+    .contact__value {
+        font-size: 0.95rem;
+        color: var(--white);
+        line-height: 1.6;
+    }
+
+    .contact__value a {
+        transition: color 0.3s ease;
+    }
+
+    .contact__value a:hover {
+        color: var(--gold);
+    }
+
+    .map {
+        width: 100%;
+        height: 450px;
+        background: var(--charcoal-light);
+    }
+
+    .map iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        filter: grayscale(20%);
+    }
+
+    @media (max-width: 1024px) {
+        .contact__grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact__grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .contact__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

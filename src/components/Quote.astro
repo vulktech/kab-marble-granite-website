@@ -1,0 +1,85 @@
+---
+
+---
+
+<section class="quote">
+    <div class="quote__bg"></div>
+    <div class="quote__decor quote__decor--1"></div>
+    <div class="quote__decor quote__decor--2"></div>
+
+    <div class="container">
+        <div class="quote__content reveal">
+            <div class="quote__mark">"</div>
+            <p class="quote__text">
+                Providing exceptional quality service, making every <span>result more exciting</span> than you ever imagined.
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .quote {
+        position: relative;
+        padding: clamp(6rem, 12vw, 10rem) 0;
+        background: var(--charcoal);
+        overflow: hidden;
+    }
+
+    .quote__bg {
+        position: absolute;
+        inset: 0;
+        opacity: 0.1;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .quote__decor {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border: 1px solid rgba(198, 159, 80, 0.15);
+        pointer-events: none;
+    }
+
+    .quote__decor--1 {
+        top: -100px;
+        left: -100px;
+        transform: rotate(45deg);
+    }
+
+    .quote__decor--2 {
+        bottom: -100px;
+        right: -100px;
+        border-radius: 50%;
+    }
+
+    .quote__content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .quote__mark {
+        font-family: var(--font-display);
+        font-size: 10rem;
+        line-height: 0.5;
+        color: var(--gold);
+        opacity: 0.3;
+        margin-bottom: 1rem;
+    }
+
+    .quote__text {
+        font-family: var(--font-display);
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 400;
+        font-style: italic;
+        line-height: 1.5;
+        color: var(--white);
+    }
+
+    .quote__text span {
+        color: var(--gold);
+        font-style: normal;
+    }
+</style>

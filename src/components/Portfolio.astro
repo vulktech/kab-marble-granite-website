@@ -1,0 +1,146 @@
+---
+import { images } from '../config/images';
+---
+
+<section class="section section--cream" id="work">
+    <div class="container">
+        <header class="section__header reveal">
+            <span class="section__badge">Portfolio</span>
+            <h2 class="section__title">Our <em>Work</em></h2>
+            <div class="section__line"></div>
+        </header>
+
+        <div class="portfolio__filters reveal">
+            <button class="portfolio__filter active">All</button>
+            <button class="portfolio__filter">Bathroom</button>
+            <button class="portfolio__filter">Kitchen</button>
+        </div>
+
+        <div class="portfolio__grid">
+            {images.portfolio.map((item) => (
+                <article class="portfolio__item reveal">
+                    <img src={item.src} alt={item.alt}>
+                    <div class="portfolio__item-overlay">
+                        <span class="portfolio__item-label">{item.category}</span>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .portfolio__filters {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .portfolio__filter {
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        background: none;
+        border: none;
+        color: var(--text-light);
+        cursor: pointer;
+        padding: 0.5rem 0;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .portfolio__filter::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: var(--gold);
+        transition: width 0.4s var(--ease-out);
+    }
+
+    .portfolio__filter:hover,
+    .portfolio__filter:global(.active) {
+        color: var(--charcoal);
+    }
+
+    .portfolio__filter:global(.active)::after,
+    .portfolio__filter:hover::after {
+        width: 100%;
+    }
+
+    .portfolio__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+
+    .portfolio__item {
+        position: relative;
+        aspect-ratio: 1;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .portfolio__item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s var(--ease-out);
+    }
+
+    .portfolio__item:hover img {
+        transform: scale(1.1);
+    }
+
+    .portfolio__item-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(26,26,26,0.9) 0%, transparent 60%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        display: flex;
+        align-items: flex-end;
+        padding: 1.5rem;
+    }
+
+    .portfolio__item:hover .portfolio__item-overlay {
+        opacity: 1;
+    }
+
+    .portfolio__item-label {
+        font-family: var(--font-body);
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        transform: translateY(10px);
+        transition: transform 0.4s var(--ease-out);
+    }
+
+    .portfolio__item:hover .portfolio__item-label {
+        transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+        .portfolio__grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .portfolio__grid {
+            grid-template-columns: 1fr;
+        }
+
+        .portfolio__filters {
+            gap: 1.5rem;
+        }
+    }
+</style>

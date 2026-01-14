@@ -1,0 +1,318 @@
+---
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <slot />
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header?.classList.add('scrolled');
+                backToTop?.classList.add('visible');
+            } else {
+                header?.classList.remove('scrolled');
+                backToTop?.classList.remove('visible');
+            }
+        });
+
+        // Portfolio filters
+        const filterBtns = document.querySelectorAll('.portfolio__filter');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
+
+<style is:global>
+    /* =============================================
+       CSS VARIABLES & RESET
+    ============================================= */
+    :root {
+        --gold: #C69F50;
+        --gold-light: #d4b06a;
+        --gold-dark: #a8864a;
+        --charcoal: #1a1a1a;
+        --charcoal-light: #2d2d2d;
+        --charcoal-soft: #3a3a3a;
+        --cream: #faf9f7;
+        --cream-dark: #f2f0eb;
+        --cream-warm: #f7f5f0;
+        --white: #ffffff;
+        --text-dark: #1a1a1a;
+        --text-muted: #666666;
+        --text-light: #999999;
+
+        --font-display: 'Bodoni Moda', serif;
+        --font-body: 'Manrope', sans-serif;
+
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+        --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+        --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+        --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+        --shadow-gold: 0 10px 40px rgba(198,159,80,0.25);
+    }
+
+    *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+    }
+
+    body {
+        font-family: var(--font-body);
+        background: var(--cream);
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    ul, ol {
+        list-style: none;
+    }
+
+    ::selection {
+        background: var(--gold);
+        color: var(--white);
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--cream-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--gold);
+        border-radius: 5px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 clamp(1.5rem, 4vw, 4rem);
+    }
+
+    .container--wide {
+        max-width: 1600px;
+    }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 1rem 2rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.4s var(--ease-out);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn--primary {
+        background: var(--gold);
+        color: var(--charcoal);
+    }
+
+    .btn--primary:hover {
+        background: var(--charcoal);
+        color: var(--gold);
+        box-shadow: var(--shadow-gold);
+    }
+
+    .btn--outline {
+        background: transparent;
+        border: 2px solid var(--gold);
+        color: var(--gold);
+    }
+
+    .btn--outline:hover {
+        background: var(--gold);
+        color: var(--charcoal);
+    }
+
+    .btn--white {
+        background: var(--white);
+        color: var(--charcoal);
+    }
+
+    .btn--white:hover {
+        background: var(--gold);
+        color: var(--white);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    /* =============================================
+       SECTION COMMON STYLES
+    ============================================= */
+    .section {
+        padding: clamp(5rem, 10vw, 8rem) 0;
+        position: relative;
+    }
+
+    .section--dark {
+        background: var(--charcoal);
+        color: var(--white);
+    }
+
+    .section--cream {
+        background: var(--cream-dark);
+    }
+
+    .section__header {
+        text-align: center;
+        margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+
+    .section__badge {
+        display: inline-block;
+        font-family: var(--font-body);
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1.25rem;
+    }
+
+    .section__title {
+        font-family: var(--font-display);
+        font-size: clamp(2.25rem, 5vw, 3.5rem);
+        font-weight: 400;
+        line-height: 1.2;
+    }
+
+    .section__title em {
+        font-style: italic;
+    }
+
+    .section__line {
+        width: 60px;
+        height: 2px;
+        background: var(--gold);
+        margin: 1.5rem auto 0;
+    }
+
+    /* =============================================
+       ANIMATIONS
+    ============================================= */
+    @keyframes fadeUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        to { opacity: 1; }
+    }
+
+    @keyframes scrollPulse {
+        0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
+        50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s var(--ease-out);
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 480px) {
+        .btn {
+            width: 100%;
+        }
+    }
+</style>

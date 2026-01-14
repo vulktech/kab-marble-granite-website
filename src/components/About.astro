@@ -1,0 +1,109 @@
+---
+import { images } from '../config/images';
+---
+
+<section class="section" id="about">
+    <div class="container">
+        <header class="section__header reveal">
+            <span class="section__badge">Our Expertise</span>
+            <h2 class="section__title">What We <em>Do</em></h2>
+            <div class="section__line"></div>
+        </header>
+
+        <div class="about__grid">
+            <article class="about__card reveal">
+                <div class="about__card-img">
+                    <img src={images.about.kitchen} alt="Kitchen Renovation">
+                </div>
+                <div class="about__card-content">
+                    <h3 class="about__card-title">Kitchen Renovation</h3>
+                    <p class="about__card-text">
+                        Transform your kitchen into the heart of your home with our premium countertop installations. We help you select the perfect marble or granite that complements your vision and elevates your lifestyle.
+                    </p>
+                </div>
+            </article>
+
+            <article class="about__card reveal">
+                <div class="about__card-img">
+                    <img src={images.about.bathroom} alt="Bath Renovation">
+                </div>
+                <div class="about__card-content">
+                    <h3 class="about__card-title">Bath Renovation</h3>
+                    <p class="about__card-text">
+                        Elevate your bathroom into a spa-like retreat with our luxury renovations. From elegant vanity tops to stunning shower surrounds, we create spaces that exceed your expectations.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+    .about__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+
+    .about__card {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about__card-img {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+    }
+
+    .about__card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s var(--ease-out);
+    }
+
+    .about__card:hover .about__card-img img {
+        transform: scale(1.08);
+    }
+
+    .about__card-img::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(26,26,26,0.5) 0%, transparent 50%);
+    }
+
+    .about__card-content {
+        padding: 2rem 0;
+    }
+
+    .about__card-title {
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .about__card-title::before {
+        content: '';
+        width: 30px;
+        height: 2px;
+        background: var(--gold);
+    }
+
+    .about__card-text {
+        font-size: 1rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+        .about__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

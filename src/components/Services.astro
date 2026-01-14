@@ -1,0 +1,126 @@
+---
+const services = [
+    {
+        title: 'Kitchen Remodel',
+        description: 'Complete kitchen remodeling with premium countertops, custom tiling, and elegant flooring solutions.',
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>',
+    },
+    {
+        title: 'Bathroom Remodel',
+        description: 'Full bathroom transformations including vanity tops, shower surrounds, and luxury fixture installations.',
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>',
+    },
+    {
+        title: 'Home Remodeling',
+        description: 'Comprehensive home renovations including wall modifications, paint finishes, and door installations.',
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>',
+    },
+    {
+        title: 'Room Addition',
+        description: 'Home extensions, garage expansions, and additional bedroom constructions with precision craftsmanship.',
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>',
+    },
+    {
+        title: 'Flooring',
+        description: 'Expert installation, precise measuring, tile and grout cleaning, and professional color sealing services.',
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>',
+    },
+    {
+        title: 'Replacement Windows',
+        description: 'Energy-efficient windows and doors with the highest-quality installation and workmanship guarantee.',
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>',
+    },
+];
+---
+
+<section class="section" id="services">
+    <div class="container">
+        <header class="section__header reveal">
+            <span class="section__badge">What We Offer</span>
+            <h2 class="section__title">Our <em>Services</em></h2>
+            <div class="section__line"></div>
+        </header>
+
+        <div class="services__grid">
+            {services.map((service) => (
+                <article class="service reveal">
+                    <svg class="service__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <Fragment set:html={service.icon} />
+                    </svg>
+                    <h3 class="service__title">{service.title}</h3>
+                    <p class="service__text">{service.description}</p>
+                </article>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .services__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .service {
+        background: var(--white);
+        padding: 2.5rem;
+        position: relative;
+        transition: all 0.4s var(--ease-out);
+        border: 1px solid transparent;
+    }
+
+    .service::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 0;
+        background: var(--gold);
+        transition: height 0.4s var(--ease-out);
+    }
+
+    .service:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+        border-color: rgba(198, 159, 80, 0.2);
+    }
+
+    .service:hover::before {
+        height: 100%;
+    }
+
+    .service__icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1.5rem;
+        color: var(--gold);
+    }
+
+    .service__title {
+        font-family: var(--font-display);
+        font-size: 1.375rem;
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+        color: var(--charcoal);
+    }
+
+    .service__text {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+    }
+
+    @media (max-width: 1024px) {
+        .services__grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .services__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
