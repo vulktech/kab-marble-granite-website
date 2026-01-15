@@ -33,7 +33,8 @@ src/
 │   ├── Services.astro # Services grid
 │   ├── Process.astro  # Process timeline
 │   ├── Contact.astro  # Contact info + map
-│   └── Footer.astro   # Footer with back-to-top
+│   ├── Footer.astro   # Footer with back-to-top
+│   └── FreeQuote.astro # Free quote CTA section
 ├── config/
 │   └── images.ts      # Centralized image paths
 ├── layouts/

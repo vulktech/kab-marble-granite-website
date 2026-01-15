@@ -52,6 +52,7 @@ build/
 out/
 .output/
 .nuxt/
+.astro/
 
 # Logs
 logs/
